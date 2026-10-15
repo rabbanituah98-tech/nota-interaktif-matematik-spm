@@ -51,7 +51,7 @@ a{color:inherit}
 .side{width:var(--side);flex:none;position:sticky;top:0;height:100vh;overflow:auto;background:var(--card);border-right:1px solid var(--line);padding:18px 14px 24px;z-index:40}
 .main{flex:1;min-width:0;display:flex;flex-direction:column}
 .top{position:sticky;top:0;z-index:30;display:flex;align-items:center;gap:12px;padding:10px 22px;background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
-.top .ttl{font-weight:800;font-size:15px;line-height:1.2;min-width:0}
+.top .ttl{font-weight:800;font-size:15px;line-height:1.2;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .top .ttl small{display:block;font-weight:600;color:var(--muted);font-size:11.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .clock{margin-left:auto;display:flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:6px 14px;font-size:13px;font-weight:600;white-space:nowrap;box-shadow:var(--shadow)}
 .clock b{font-variant-numeric:tabular-nums;color:var(--brand)}
@@ -226,6 +226,33 @@ a{color:inherit}
 .flow.h li:after{display:none}
 .dash{letter-spacing:.02em}
 
+/* ---------- latihan ---------- */
+.lnums{display:grid;grid-template-columns:repeat(10,1fr);gap:6px;margin:4px 0 12px}
+.lnums button{border:1.5px solid var(--line);background:var(--card);border-radius:11px;height:38px;font-weight:800;font-size:14px;color:var(--ink2);padding:0}
+.lnums button.done{background:color-mix(in srgb,#16a34a 16%,var(--card));border-color:color-mix(in srgb,#16a34a 50%,transparent);color:#15803d}
+.lnums button.on{background:var(--cc);border-color:var(--cc);color:#fff}
+:root[data-theme="dark"] .lnums button.done:not(.on){color:#4ade80}
+.lq{border-radius:16px;border:1.5px solid color-mix(in srgb,var(--cc) 45%,transparent);background:color-mix(in srgb,var(--cc) 8%,var(--card));overflow:hidden}
+.lqh{display:flex;align-items:center;justify-content:space-between;padding:7px 12px;background:var(--cc);color:#fff;font-weight:800;font-size:12.5px;letter-spacing:.06em}
+.ldone{display:inline-flex;align-items:center;gap:4px;background:rgba(255,255,255,.25);border-radius:999px;padding:2px 9px;letter-spacing:0}
+.ldone svg{width:14px;height:14px}
+.lqt{padding:12px 14px;font-size:16px;font-weight:600;line-height:1.6;overflow-x:auto}
+.lqt .tw{margin:8px 0}
+.lsteps{list-style:none;counter-reset:ls;padding:0;margin:10px 0 0}
+.lsteps li{counter-increment:ls;position:relative;padding:9px 12px 9px 50px;margin:7px 0;border-radius:12px;background:var(--bg2);border:1px dashed color-mix(in srgb,var(--cc) 40%,transparent);font-size:15px;line-height:1.6;animation:pop .3s ease;overflow-x:auto}
+.lsteps li:before{content:"L" counter(ls);position:absolute;left:9px;top:9px;min-width:30px;height:24px;border-radius:8px;display:grid;place-items:center;background:color-mix(in srgb,var(--cc) 18%,transparent);color:var(--cc);font-weight:800;font-size:12px}
+.lans{margin:10px 0 0;border-radius:14px;padding:10px 14px;background:color-mix(in srgb,#16a34a 12%,var(--card));border:2px solid #16a34a;animation:pop .3s ease;font-size:16px;font-weight:700}
+.lans span{display:block;font-size:11px;letter-spacing:.1em;color:#16a34a;font-weight:800}
+.lbtns{display:flex;gap:8px;margin-top:12px}
+.lbtns button{border:0;border-radius:13px;padding:12px 14px;font-weight:800;font-size:14.5px;display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px}
+.lstep{flex:1;background:linear-gradient(135deg,var(--cc),color-mix(in srgb,var(--cc) 65%,#1e1b4b));color:#fff;box-shadow:0 6px 16px color-mix(in srgb,var(--cc) 35%,transparent)}
+.lall{background:var(--bg2);color:var(--ink2);border:1px solid var(--line)!important}
+.lnav{display:flex;justify-content:space-between;gap:8px;margin-top:10px}
+.lnav button{border:1px solid var(--line);background:var(--card);border-radius:12px;padding:8px 12px;font-weight:700;font-size:13px;display:inline-flex;align-items:center;gap:4px;color:var(--muted)}
+.lnav button:disabled{opacity:.35}
+.lnav button svg{width:16px;height:16px}
+.tab.tlat{border-color:color-mix(in srgb,var(--cc) 45%,transparent)}
+
 /* ---------- quiz ---------- */
 .qz{margin:0 0 16px;padding:14px;border-radius:16px;background:var(--bg2);border:1px solid var(--line)}
 .qz .q{font-weight:800;font-size:15.5px;margin-bottom:10px;display:flex;gap:10px}
@@ -307,6 +334,9 @@ mark{background:#fde047;color:#1b2033;border-radius:4px;padding:0 2px}
 }
 .sclose{display:none;align-items:center;justify-content:center;gap:8px;width:100%;margin-top:14px;border:0;border-radius:14px;padding:13px;background:var(--bg2);font-weight:800}
 @media (max-width:560px){
+  .lnums{grid-template-columns:repeat(5,1fr)}
+  .lqt{font-size:15px}
+  .lsteps li{font-size:14.5px}
   .grid{grid-template-columns:1fr 1fr;gap:10px}
   .ccard{padding:12px}
   .ccard b{font-size:13.5px}
@@ -346,6 +376,12 @@ mark{background:#fde047;color:#1b2033;border-radius:4px;padding:0 2px}
   .pcard h3{margin:0 0 6px;font-size:16px;color:var(--cc);display:flex;align-items:center;gap:8px}
   .pq{font-size:13px;margin:4px 0}
   .pfoot{font-size:10px;color:#666;text-align:center;margin-top:8px}
+  .plat{border-top:1px dashed #d5dae6;padding:6px 0;page-break-inside:avoid;break-inside:avoid}
+  .plat p{margin:4px 0}.plat ol{margin:2px 0 4px;padding-left:22px;font-size:12.5px}
+  .pans{color:#15803d}
+  .pws{page-break-inside:avoid;break-inside:avoid;border-bottom:1px solid #e3e7f0;padding:4px 0}
+  .pws p{margin:4px 0}
+  .pspace{height:95px}
   .box,.tw,.fig,.steps li,.flow li,.g2{page-break-inside:avoid;break-inside:avoid}
   .eq,.work{background:#fff}
 }
@@ -454,9 +490,10 @@ mark{background:#fde047;color:#1b2033;border-radius:4px;padding:0 2px}
   <div class="sh-h"><svg class="i"><use href="#i-print"/></svg>Cetak Nota<button class="x" data-close><svg class="i"><use href="#i-x"/></svg></button></div>
   <div class="sh-b">
     <button class="popt" data-print="chap" id="pChap"><span class="ico"><svg class="i"><use href="#i-book"/></svg></span><span><b>Bab ini sahaja</b><small id="pChapName">Buka satu bab dahulu</small></span></button>
-    <button class="popt" data-print="t4"><span class="ico"><svg class="i"><use href="#i-layers"/></svg></span><span><b>Semua bab Tingkatan 4</b><small>10 bab • nota + kuiz + jawapan</small></span></button>
-    <button class="popt" data-print="t5"><span class="ico"><svg class="i"><use href="#i-layers"/></svg></span><span><b>Semua bab Tingkatan 5</b><small>8 bab • nota + kuiz + jawapan</small></span></button>
-    <button class="popt" data-print="all"><span class="ico"><svg class="i"><use href="#i-print"/></svg></span><span><b>Modul penuh (T4 + T5)</b><small>18 bab lengkap</small></span></button>
+    <button class="popt" data-print="latws" id="pLat"><span class="ico"><svg class="i"><use href="#i-pencil"/></svg></span><span><b>Lembaran latihan bab ini</b><small id="pLatName">Buka satu bab dahulu</small></span></button>
+    <button class="popt" data-print="t4"><span class="ico"><svg class="i"><use href="#i-layers"/></svg></span><span><b>Semua bab Tingkatan 4</b><small>10 bab • nota + 100 latihan + kuiz</small></span></button>
+    <button class="popt" data-print="t5"><span class="ico"><svg class="i"><use href="#i-layers"/></svg></span><span><b>Semua bab Tingkatan 5</b><small>8 bab • nota + 80 latihan + kuiz</small></span></button>
+    <button class="popt" data-print="all"><span class="ico"><svg class="i"><use href="#i-print"/></svg></span><span><b>Modul penuh (T4 + T5)</b><small>18 bab • 180 latihan berserta langkah kerja</small></span></button>
     <button class="popt" data-print="rumus"><span class="ico"><svg class="i"><use href="#i-sigma"/></svg></span><span><b>Rumus Kilat sahaja</b><small>Helaian rumus untuk ditampal</small></span></button>
     <p class="hint">Tip: Pilih "Simpan sebagai PDF" dalam tetingkap cetak untuk dapatkan fail PDF. Hidupkan "Background graphics" supaya warna keluar.</p>
   </div>
@@ -1475,6 +1512,608 @@ CHAPTERS.push({
   ]
 });
 
+/* ================= LATIHAN TINGKATAN 4 ================= */
+const LAT = {};
+const L = (q, s, a) => ({ q, s, a });
+
+LAT.t4b1 = [
+  L('Nyatakan nilai a, b, c dan pintasan-y bagi f(x) = 3x² − 5x + 2.',
+    ['Bandingkan dengan bentuk am f(x) = ax² + bx + c', 'a = 3, b = −5, c = 2', 'Pintasan-y = nilai c'],
+    'a = 3, b = −5, c = 2; pintasan-y = 2'),
+  L('Adakah graf f(x) = 4 − x² mempunyai titik maksimum atau minimum?',
+    ['Susun semula: f(x) = −x² + 4', 'Pekali x², a = −1', 'a &lt; 0 → bentuk ∩'],
+    'Titik maksimum'),
+  L('Cari persamaan paksi simetri bagi f(x) = x² − 6x + 5.',
+    ['a = 1, b = −6', `x = −${fr('b', '2a')} = −${fr('−6', '2(1)')}`, 'x = 3'],
+    'x = 3'),
+  L('Selesaikan x² + 7x + 12 = 0.',
+    ['Cari dua nombor: darab = 12, tambah = 7 → 3 dan 4', '(x + 3)(x + 4) = 0', 'x + 3 = 0 atau x + 4 = 0'],
+    'x = −3 atau x = −4'),
+  L('Selesaikan x² − 9 = 0.',
+    ['Beza kuasa dua: x² − 3² = (x − 3)(x + 3)', '(x − 3)(x + 3) = 0', 'x − 3 = 0 atau x + 3 = 0'],
+    'x = 3 atau x = −3'),
+  L('Selesaikan x² = 5x.',
+    ['Pindah semua ke kiri: x² − 5x = 0', '<b>Jangan</b> bahagi dengan x! Faktorkan: x(x − 5) = 0', 'x = 0 atau x − 5 = 0'],
+    'x = 0 atau x = 5'),
+  L('Selesaikan 2x² − 7x + 3 = 0.',
+    ['Cari faktor: (2x − 1)(x − 3)', 'Semak: 2x² − 6x − x + 3 = 2x² − 7x + 3 ✔', '2x − 1 = 0 atau x − 3 = 0'],
+    `x = ${fr('1', '2')} atau x = 3`),
+  L('Selesaikan 3x² + x = 2.',
+    ['Bentuk am: 3x² + x − 2 = 0', 'Faktorkan: (3x − 2)(x + 1) = 0', 'Semak: 3x² + 3x − 2x − 2 ✔', '3x − 2 = 0 atau x + 1 = 0'],
+    `x = ${fr('2', '3')} atau x = −1`),
+  L('Selesaikan x(x + 2) = 15.',
+    ['Kembangkan: x² + 2x = 15', 'Bentuk am: x² + 2x − 15 = 0', 'Faktorkan: (x + 5)(x − 3) = 0'],
+    'x = −5 atau x = 3'),
+  L('Sebuah segi tiga mempunyai tapak (x + 2) cm, tinggi x cm dan luas 12 cm². Cari panjang tapak.',
+    [`Luas = ${fr('1', '2')} × tapak × tinggi → ${fr('1', '2')}x(x + 2) = 12`, 'x² + 2x = 24 → x² + 2x − 24 = 0', '(x + 6)(x − 4) = 0 → x = −6 atau x = 4', 'x = −6 ditolak (panjang tidak negatif), maka x = 4', 'Tapak = 4 + 2'],
+    'Tapak = 6 cm')
+];
+
+LAT.t4b2 = [
+  L('Tukar 11010₂ kepada asas 10.',
+    ['Nilai tempat: 16, 8, 4, 2, 1', '1(16) + 1(8) + 0(4) + 1(2) + 0(1)', '= 16 + 8 + 2'],
+    '26₁₀'),
+  L('Tukar 312₄ kepada asas 10.',
+    ['Nilai tempat: 4² = 16, 4¹ = 4, 4⁰ = 1', '3(16) + 1(4) + 2(1)', '= 48 + 4 + 2'],
+    '54₁₀'),
+  L('Tukar 243₅ kepada asas 10.',
+    ['Nilai tempat: 25, 5, 1', '2(25) + 4(5) + 3(1)', '= 50 + 20 + 3'],
+    '73₁₀'),
+  L('Tukar 132₄ kepada asas 5.',
+    ['Langkah 1 — ke asas 10: 1(16) + 3(4) + 2(1) = 30', 'Langkah 2 — bahagi berulang dengan 5: 30 ÷ 5 = 6 baki 0', '6 ÷ 5 = 1 baki 1; 1 ÷ 5 = 0 baki 1', 'Baca baki dari bawah: 1, 1, 0'],
+    '110₅'),
+  L('Tukar 37₁₀ kepada asas 2.',
+    ['37 ÷ 2 = 18 baki 1', '18 ÷ 2 = 9 baki 0; 9 ÷ 2 = 4 baki 1', '4 ÷ 2 = 2 baki 0; 2 ÷ 2 = 1 baki 0; 1 ÷ 2 = 0 baki 1', 'Baca dari bawah ke atas', 'Semak: 32 + 4 + 1 = 37 ✔'],
+    '100101₂'),
+  L('Tukar 89₁₀ kepada asas 5.',
+    ['89 ÷ 5 = 17 baki 4', '17 ÷ 5 = 3 baki 2', '3 ÷ 5 = 0 baki 3', 'Baca dari bawah: 3, 2, 4', 'Semak: 75 + 10 + 4 = 89 ✔'],
+    '324₅'),
+  L('Tukar 100₁₀ kepada asas 8.',
+    ['100 ÷ 8 = 12 baki 4', '12 ÷ 8 = 1 baki 4', '1 ÷ 8 = 0 baki 1', 'Semak: 64 + 32 + 4 = 100 ✔'],
+    '144₈'),
+  L('Tukar 110111₂ kepada asas 8.',
+    ['Kumpul 3 digit dari kanan: 110 | 111', '110₂ = 4 + 2 + 0 = 6', '111₂ = 4 + 2 + 1 = 7'],
+    '67₈'),
+  L('Hitung 1101₂ + 1011₂. Beri jawapan dalam asas 2.',
+    ['Tukar ke asas 10: 1101₂ = 13, 1011₂ = 11', '13 + 11 = 24', 'Tukar 24 ke asas 2: 24 = 16 + 8', '= 1(16) + 1(8) + 0(4) + 0(2) + 0(1)'],
+    '11000₂'),
+  L('Hitung 1100₂ − 101₂. Beri jawapan dalam asas 2.',
+    ['Tukar ke asas 10: 1100₂ = 12, 101₂ = 5', '12 − 5 = 7', '7 = 4 + 2 + 1'],
+    '111₂')
+];
+
+LAT.t4b3 = [
+  L('Adakah ayat berikut pernyataan? Jika ya, nyatakan nilai kebenarannya.<br>(a) 8 ialah gandaan 3.<br>(b) Sila duduk.',
+    ['(a) Boleh ditentukan benar atau palsu → pernyataan', '8 ÷ 3 bukan nombor bulat → palsu', '(b) Ayat arahan → tidak boleh dinilai benar/palsu'],
+    '(a) Pernyataan, palsu &nbsp;(b) Bukan pernyataan'),
+  L('Tulis penafian bagi "Semua nombor perdana ialah nombor ganjil" dan nyatakan nilai kebenarannya.',
+    ['Penafian "Semua…" ialah "Bukan semua…"', '"Bukan semua nombor perdana ialah nombor ganjil"', '2 ialah nombor perdana yang genap'],
+    'Bukan semua nombor perdana ialah nombor ganjil — Benar'),
+  L('Tentukan nilai kebenaran: "√9 = 3 dan 2³ = 6".',
+    ['√9 = 3 → Benar', '2³ = 8, bukan 6 → Palsu', '"dan": B dan P'],
+    'Palsu'),
+  L('Tentukan nilai kebenaran: "5 > 7 atau 4 ialah faktor bagi 12".',
+    ['5 > 7 → Palsu', '12 ÷ 4 = 3 → Benar', '"atau": P atau B'],
+    'Benar'),
+  L('Tulis akas, songsangan dan kontrapositif bagi "Jika x = 4, maka x² = 16".',
+    ['p: x = 4, q: x² = 16', 'Akas (q ⇒ p): Jika x² = 16, maka x = 4', 'Songsangan (~p ⇒ ~q): Jika x ≠ 4, maka x² ≠ 16', 'Kontrapositif (~q ⇒ ~p): Jika x² ≠ 16, maka x ≠ 4'],
+    'Lihat langkah kerja'),
+  L('Berdasarkan soalan 5, nyatakan nilai kebenaran implikasi, akas, songsangan dan kontrapositif.',
+    ['Implikasi: 4² = 16 → Benar', 'Akas: x² = 16 boleh jadi x = −4 → Palsu', 'Songsangan sama nilai dengan akas → Palsu', 'Kontrapositif sama nilai dengan implikasi → Benar'],
+    'Implikasi B, Akas P, Songsangan P, Kontrapositif B'),
+  L('Lengkapkan hujah:<br>Premis 1: Jika sebuah poligon ialah heksagon, maka poligon itu mempunyai 6 sisi.<br>Premis 2: PQRSTU ialah heksagon.<br>Kesimpulan: ______',
+    ['Bentuk II: Jika p, maka q; p benar', 'p = PQRSTU ialah heksagon (benar)', 'Maka q benar'],
+    'PQRSTU mempunyai 6 sisi'),
+  L('Lengkapkan hujah:<br>Premis 1: Semua gandaan 10 ialah gandaan 5.<br>Premis 2: 70 ialah gandaan 10.<br>Kesimpulan: ______',
+    ['Bentuk I: Semua A ialah B; C ialah A', 'A = gandaan 10, B = gandaan 5, C = 70', 'Maka C ialah B'],
+    '70 ialah gandaan 5'),
+  L('Lengkapkan hujah:<br>Premis 1: Jika x > 8, maka x > 5.<br>Premis 2: x tidak lebih besar daripada 5.<br>Kesimpulan: ______',
+    ['Bentuk III: Jika p, maka q; bukan q benar', 'Bukan q = x tidak lebih besar daripada 5', 'Maka bukan p benar'],
+    'x tidak lebih besar daripada 8'),
+  L('Buat kesimpulan umum secara induktif bagi pola 2, 5, 8, 11, …',
+    ['Beza antara sebutan = 3 → pekali n ialah 3', '3(1) + ? = 2 → ? = −1', 'Semak: 3(4) − 1 = 11 ✔', 'Tulis dalam bentuk umum'],
+    '3n − 1, n = 1, 2, 3, …')
+];
+
+LAT.t4b4 = [
+  L('ξ = {1, 2, …, 10}, A = {1, 2, 3, 4, 5, 6}, B = {2, 4, 6, 8, 10}. Senaraikan A ∩ B.',
+    ['Cari unsur yang ada dalam KEDUA-DUA set', '2 ✔, 4 ✔, 6 ✔'],
+    'A ∩ B = {2, 4, 6}'),
+  L('Guna set dalam soalan 1. Senaraikan A ∪ B.',
+    ['Gabung semua unsur A dan B', 'Unsur berulang (2, 4, 6) ditulis sekali sahaja'],
+    'A ∪ B = {1, 2, 3, 4, 5, 6, 8, 10}'),
+  L("Guna set dalam soalan 1. Senaraikan A'.",
+    ['Unsur dalam ξ tetapi BUKAN dalam A', 'ξ = {1, …, 10}, buang 1–6'],
+    "A' = {7, 8, 9, 10}"),
+  L("Guna set dalam soalan 1. Senaraikan (A ∪ B)'.",
+    ['A ∪ B = {1, 2, 3, 4, 5, 6, 8, 10}', 'Unsur ξ yang tiada dalam A ∪ B'],
+    "(A ∪ B)' = {7, 9}"),
+  L('Guna set dalam soalan 1 dan C = {3, 6, 9}. Senaraikan A ∩ B ∩ C.',
+    ['A ∩ B = {2, 4, 6}', 'Unsur sepunya dengan C = {3, 6, 9}', 'Hanya 6'],
+    'A ∩ B ∩ C = {6}'),
+  L("Guna set dalam soalan 1. Senaraikan A' ∩ B.",
+    ["A' = {7, 8, 9, 10}", 'B = {2, 4, 6, 8, 10}', 'Unsur sepunya'],
+    "A' ∩ B = {8, 10}"),
+  L('n(A) = 15, n(B) = 12, n(A ∩ B) = 5. Cari n(A ∪ B).',
+    ['n(A ∪ B) = n(A) + n(B) − n(A ∩ B)', '= 15 + 12 − 5'],
+    'n(A ∪ B) = 22'),
+  L("n(ξ) = 40 dan n(A ∪ B) = 33. Cari n((A ∪ B)').",
+    ["n((A ∪ B)') = n(ξ) − n(A ∪ B)", '= 40 − 33'],
+    "n((A ∪ B)') = 7"),
+  L('50 murid: 30 ambil Sains, 25 ambil Sejarah, 10 ambil kedua-duanya. Berapa murid tidak ambil kedua-dua subjek?',
+    ['n(Sains ∪ Sejarah) = 30 + 25 − 10 = 45', 'Tidak ambil kedua-dua = 50 − 45'],
+    '5 murid'),
+  L('n(ξ) = 36, n(P) = 20, n(Q) = 18. Setiap murid menyertai sekurang-kurangnya satu kelab. Cari n(P ∩ Q).',
+    ['Semua murid dalam P ∪ Q → n(P ∪ Q) = 36', '36 = 20 + 18 − n(P ∩ Q)', 'n(P ∩ Q) = 38 − 36'],
+    'n(P ∩ Q) = 2')
+];
+
+LAT.t4b5 = [
+  L('Sebuah graf mempunyai 5 bucu dengan darjah 2, 3, 3, 2 dan 4. Cari bilangan tepi.',
+    ['Σd(v) = 2 + 3 + 3 + 2 + 4 = 14', 'Σd(v) = 2E → 14 = 2E', 'E = 14 ÷ 2'],
+    '7 tepi'),
+  L('Sebuah graf mudah mempunyai 6 tepi. Cari jumlah darjah.',
+    ['Σd(v) = 2E', '= 2 × 6'],
+    'Jumlah darjah = 12'),
+  L('Bucu P mempunyai satu gelung dan 3 tepi lain. Cari d(P).',
+    ['Gelung menyumbang 2 darjah', 'Tepi lain: 3 darjah', 'd(P) = 2 + 3'],
+    'd(P) = 5'),
+  L('Sebuah pokok mempunyai 12 bucu. Berapakah bilangan tepinya?',
+    ['Pokok: tepi = bucu − 1', '= 12 − 1'],
+    '11 tepi'),
+  L('Sebuah pokok mempunyai 15 tepi. Berapakah bilangan bucunya?',
+    ['Bucu = tepi + 1', '= 15 + 1'],
+    '16 bucu'),
+  L('Graf terarah mempunyai tepi A→B, A→C, B→C dan C→A. Cari d<sub>in</sub>(C) dan d<sub>out</sub>(C).',
+    ['Masuk ke C: A→C, B→C → d<sub>in</sub>(C) = 2', 'Keluar dari C: C→A → d<sub>out</sub>(C) = 1'],
+    'd<sub>in</sub>(C) = 2, d<sub>out</sub>(C) = 1'),
+  L('Sebuah graf bersambung mempunyai 5 bucu dan 5 tepi. Adakah graf itu sebuah pokok?',
+    ['Pokok mesti: tepi = bucu − 1 = 4', 'Graf ini ada 5 tepi ≠ 4', 'Lebih satu tepi → wujud litar tertutup'],
+    'Bukan pokok'),
+  L('Graf bersambung mempunyai 7 bucu dan 9 tepi. Berapa tepi mesti dibuang untuk membentuk pokok?',
+    ['Pokok 7 bucu perlu 7 − 1 = 6 tepi', 'Tepi dibuang = 9 − 6'],
+    '3 tepi'),
+  L('Pemberat (km): P–Q = 4, P–R = 2, R–Q = 1, Q–S = 5, R–S = 8. Cari jarak terpendek dari P ke S.',
+    ['P → Q → S = 4 + 5 = 9', 'P → R → S = 2 + 8 = 10', 'P → R → Q → S = 2 + 1 + 5 = 8', 'Pilih yang paling kecil'],
+    '8 km (P → R → Q → S)'),
+  L('Graf dengan 6 tepi mempunyai 4 bucu berdarjah 3, 2, x dan 3. Cari x.',
+    ['Σd(v) = 2E = 2 × 6 = 12', '3 + 2 + x + 3 = 12', '8 + x = 12'],
+    'x = 4')
+];
+
+LAT.t4b6 = [
+  L('Garis sempadan bagi 2x + y &lt; 6 dilukis sebagai garis apa?',
+    ['Simbol ialah &lt; (tiada "sama dengan")', 'Titik pada garis tidak termasuk'],
+    'Garis putus-putus'),
+  L('Nyatakan jenis garis dan rantau bagi y ≥ 3x − 2.',
+    ['≥ → garis penuh', 'y ≥ … → rantau di ATAS garis'],
+    'Garis penuh, rantau atas garis'),
+  L('Adakah titik (2, 1) memuaskan y &lt; x + 3?',
+    ['Gantikan x = 2, y = 1', 'Kiri: y = 1; Kanan: 2 + 3 = 5', '1 &lt; 5 → benar'],
+    'Ya'),
+  L('Adakah rantau 3x + 2y ≥ 6 mengandungi asalan (0, 0)?',
+    ['Gantikan (0, 0): 3(0) + 2(0) = 0', '0 ≥ 6? → palsu'],
+    'Tidak'),
+  L('Tulis 2y − 4x > 8 dalam bentuk y > mx + c dan nyatakan rantaunya.',
+    ['Tambah 4x: 2y > 4x + 8', 'Bahagi 2: y > 2x + 4', '> → garis putus-putus, rantau atas'],
+    'y > 2x + 4; atas garis putus-putus'),
+  L('Tulis −y ≤ x − 3 dalam bentuk y … mx + c.',
+    ['Darab kedua-dua belah dengan −1', 'Darab negatif → simbol TERBALIK: ≤ menjadi ≥', 'y ≥ −x + 3'],
+    'y ≥ −x + 3 (atas garis penuh)'),
+  L('Bilangan peserta lelaki, x, dan perempuan, y, tidak melebihi 40 orang. Tulis ketaksamaan.',
+    ['Jumlah peserta = x + y', '"tidak melebihi" → ≤'],
+    'x + y ≤ 40'),
+  L('Bilangan buku rujukan, y, sekurang-kurangnya tiga kali bilangan novel, x. Tulis ketaksamaan.',
+    ['"tiga kali novel" → 3x', '"sekurang-kurangnya" → ≥'],
+    'y ≥ 3x'),
+  L('Sebatang pen RM2 dan sebatang pensel RM1. Ali membeli x pen dan y pensel dengan belanja kurang daripada RM30. Tulis ketaksamaan.',
+    ['Kos pen = 2x, kos pensel = y', '"kurang daripada" → &lt;'],
+    '2x + y &lt; 30'),
+  L('Adakah titik (3, 4) berada dalam rantau yang memuaskan y ≤ x + 2, y ≥ 2 dan x &lt; 5?',
+    ['y ≤ x + 2: 4 ≤ 5 ✔', 'y ≥ 2: 4 ≥ 2 ✔', 'x &lt; 5: 3 &lt; 5 ✔', 'Mesti memuaskan SEMUA'],
+    'Ya, dalam rantau')
+];
+
+LAT.t4b7 = [
+  L('Sebuah kereta bergerak 150 km dalam 2.5 jam. Cari laju puratanya.',
+    [`Laju purata = ${fr('Jumlah jarak', 'Jumlah masa')}`, `= ${fr('150', '2.5')}`],
+    '60 km j⁻¹'),
+  L('Tukar 54 km j⁻¹ kepada m s⁻¹.',
+    ['km j⁻¹ → m s⁻¹: bahagi 3.6', '54 ÷ 3.6'],
+    '15 m s⁻¹'),
+  L('Graf jarak-masa: objek bergerak dari 0 km ke 60 km dalam 1 jam pertama. Cari lajunya.',
+    [`Laju = kecerunan = ${fr('60 − 0', '1 − 0')}`],
+    '60 km j⁻¹'),
+  L('Sambungan soalan 3: objek berhenti dari t = 1 j hingga t = 1.5 j, kemudian kembali ke titik asal pada t = 2.5 j. Cari (a) tempoh berhenti, (b) laju kembali.',
+    ['(a) 1.5 − 1 = 0.5 jam = 30 minit', `(b) Laju kembali = ${fr('60', '2.5 − 1.5')} = ${fr('60', '1')}`],
+    '(a) 30 minit (b) 60 km j⁻¹'),
+  L('Sambungan soalan 4: cari laju purata bagi keseluruhan perjalanan.',
+    ['Jumlah jarak = 60 + 60 = 120 km', 'Jumlah masa = 2.5 jam (termasuk masa berhenti)', `Laju purata = ${fr('120', '2.5')}`],
+    '48 km j⁻¹'),
+  L('Laju zarah bertambah dari 0 ke 20 m s⁻¹ dalam 5 saat. Cari pecutan.',
+    [`Pecutan = ${fr('Perubahan laju', 'Perubahan masa')} = ${fr('20 − 0', '5')}`],
+    '4 m s⁻²'),
+  L('Laju berkurang dari 25 m s⁻¹ ke 10 m s⁻¹ dalam 5 saat. Cari kadar perubahan laju.',
+    [`${fr('10 − 25', '5')} = ${fr('−15', '5')} = −3`, 'Nilai negatif = nyahpecutan'],
+    'Nyahpecutan 3 m s⁻²'),
+  L('Graf laju-masa: laju naik dari 0 ke 12 m s⁻¹ dalam 4 s, seragam hingga t = 10 s, kemudian berhenti pada t = 16 s. Cari jumlah jarak.',
+    ['Luas segi tiga 1 = ½ × 4 × 12 = 24', 'Luas segi empat = (10 − 4) × 12 = 72', 'Luas segi tiga 2 = ½ × (16 − 10) × 12 = 36', 'Jumlah = 24 + 72 + 36', 'Semak (trapezium): ½(6 + 16)(12) = 132 ✔'],
+    '132 m'),
+  L('Guna soalan 8. Cari laju purata zarah.',
+    [`Laju purata = ${fr('132', '16')}`],
+    '8.25 m s⁻¹'),
+  L('Graf laju-masa: laju naik dari 0 ke v m s⁻¹ dalam 6 s, kemudian seragam selama 4 s. Jumlah jarak 105 m. Cari v.',
+    ['Luas segi tiga = ½ × 6 × v = 3v', 'Luas segi empat = 4 × v = 4v', '3v + 4v = 105 → 7v = 105', 'v = 105 ÷ 7'],
+    'v = 15')
+];
+
+LAT.t4b8 = [
+  L('Cari julat bagi data: 12, 7, 19, 4, 15.',
+    ['Nilai terbesar = 19, terkecil = 4', 'Julat = 19 − 4'],
+    '15'),
+  L('Cari Q₁, Q₃ dan julat antara kuartil: 2, 5, 7, 8, 10, 12, 15, 18.',
+    ['Data sudah tersusun, N = 8 (genap)', 'Median = (8 + 10) ÷ 2 = 9', 'Bahagian bawah 2, 5, 7, 8 → Q₁ = (5 + 7) ÷ 2 = 6', 'Bahagian atas 10, 12, 15, 18 → Q₃ = (12 + 15) ÷ 2 = 13.5', 'JAK = 13.5 − 6'],
+    'Q₁ = 6, Q₃ = 13.5, JAK = 7.5'),
+  L('Cari min bagi 3, 5, 7, 9, 11.',
+    ['Σx = 3 + 5 + 7 + 9 + 11 = 35', `${ov('x')} = ${fr('35', '5')}`],
+    '7'),
+  L('Cari varians bagi 3, 5, 7, 9, 11.',
+    ['Σx² = 9 + 25 + 49 + 81 + 121 = 285', `σ² = ${fr('285', '5')} − 7²`, '= 57 − 49'],
+    'σ² = 8'),
+  L('Cari sisihan piawai bagi data dalam soalan 4.',
+    ['σ = √σ² = √8'],
+    'σ = 2.828'),
+  L('Skor 1, 2, 3 dengan kekerapan 2, 3, 5. Cari min dan sisihan piawai.',
+    ['Σf = 10; Σfx = 2 + 6 + 15 = 23', `${ov('x')} = ${fr('23', '10')} = 2.3`, 'Σfx² = 2(1) + 3(4) + 5(9) = 59', `σ² = ${fr('59', '10')} − 2.3² = 5.9 − 5.29 = 0.61`, 'σ = √0.61'],
+    `${ov('x')} = 2.3, σ = 0.781`),
+  L('Satu set data mempunyai min 15 dan sisihan piawai 3. Setiap nilai ditambah 4. Cari min dan sisihan piawai baharu.',
+    ['Tambah k → min juga bertambah k: 15 + 4', 'Tambah k → serakan TIDAK berubah'],
+    'Min = 19, σ = 3'),
+  L('Data sama (min 15, σ = 3). Setiap nilai didarab 2 kemudian ditolak 1. Cari min, sisihan piawai dan varians baharu.',
+    ['Min: 15 × 2 − 1 = 29', 'σ: 3 × 2 = 6 (tolak 1 tiada kesan)', 'Varians = 6²'],
+    'Min = 29, σ = 6, varians = 36'),
+  L('Diberi N = 10, Σx = 60, Σx² = 400. Cari min dan sisihan piawai.',
+    [`${ov('x')} = ${fr('60', '10')} = 6`, `σ² = ${fr('400', '10')} − 6² = 40 − 36 = 4`, 'σ = √4'],
+    `${ov('x')} = 6, σ = 2`),
+  L('Plot kotak menunjukkan: minimum 10, Q₁ = 20, median 28, Q₃ = 35, maksimum 50. Cari julat dan julat antara kuartil.',
+    ['Julat = 50 − 10', 'JAK = Q₃ − Q₁ = 35 − 20'],
+    'Julat = 40, JAK = 15')
+];
+
+LAT.t4b9 = [
+  L('Sebiji dadu dilambung. Cari kebarangkalian mendapat nombor lebih besar daripada 4.',
+    ['S = {1, 2, 3, 4, 5, 6}, n(S) = 6', 'A = {5, 6}, n(A) = 2', `P(A) = ${fr('2', '6')}`],
+    fr('1', '3')),
+  L("P(A) = 0.35. Cari P(A').",
+    ["P(A') = 1 − P(A)", '= 1 − 0.35'],
+    '0.65'),
+  L('Dua biji dadu dilambung. Cari kebarangkalian hasil tambah nombor ialah 7.',
+    ['n(S) = 6 × 6 = 36', 'Kesudahan: (1,6), (2,5), (3,4), (4,3), (5,2), (6,1) → 6', `P = ${fr('6', '36')}`],
+    fr('1', '6')),
+  L('Sekeping syiling dan sebiji dadu dilambung. Cari P(angka dan nombor perdana).',
+    ['P(angka) = ½', `Nombor perdana dadu: 2, 3, 5 → P = ${fr('3', '6')} = ½`, 'Tak bersandar → darab: ½ × ½'],
+    fr('1', '4')),
+  L('Beg: 4 guli merah, 6 guli biru. Dua guli diambil DENGAN pemulangan. Cari P(kedua-dua biru).',
+    [`P(biru) = ${fr('6', '10')} setiap kali`, `${fr('6', '10')} × ${fr('6', '10')} = ${fr('36', '100')}`],
+    fr('9', '25')),
+  L('Beg sama (4 merah, 6 biru). Dua guli diambil TANPA pemulangan. Cari P(kedua-dua biru).',
+    [`Pertama: ${fr('6', '10')}`, `Kedua (tinggal 5 biru daripada 9): ${fr('5', '9')}`, `${fr('6', '10')} × ${fr('5', '9')} = ${fr('30', '90')}`],
+    fr('1', '3')),
+  L('Beg sama, tanpa pemulangan. Cari P(satu merah dan satu biru).',
+    [`P(M, B) = ${fr('4', '10')} × ${fr('6', '9')} = ${fr('24', '90')}`, `P(B, M) = ${fr('6', '10')} × ${fr('4', '9')} = ${fr('24', '90')}`, `Tambah: ${fr('48', '90')}`],
+    fr('8', '15')),
+  L('Kebarangkalian Ali lulus ialah 0.8 dan Ben lulus ialah 0.7 (tak bersandar). Cari P(sekurang-kurangnya seorang lulus).',
+    ['P(kedua-dua gagal) = 0.2 × 0.3 = 0.06', 'P(sekurang-kurangnya seorang lulus) = 1 − P(kedua-dua gagal)', '= 1 − 0.06'],
+    '0.94'),
+  L(`A dan B saling eksklusif. P(A) = ${fr('1', '5')}, P(B) = ${fr('1', '3')}. Cari P(A ∪ B).`,
+    ['Saling eksklusif → P(A ∪ B) = P(A) + P(B)', `${fr('1', '5')} + ${fr('1', '3')} = ${fr('3', '15')} + ${fr('5', '15')}`],
+    fr('8', '15')),
+  L('Satu kad dipilih daripada kad bernombor 1 hingga 20. A = gandaan 4, B = gandaan 5. Cari P(A atau B).',
+    ['A = {4, 8, 12, 16, 20} → 5', 'B = {5, 10, 15, 20} → 4', 'A ∩ B = {20} → 1 (tidak saling eksklusif)', `P = ${fr('5', '20')} + ${fr('4', '20')} − ${fr('1', '20')} = ${fr('8', '20')}`],
+    fr('2', '5'))
+];
+
+LAT.t4b10 = [
+  L('Aina ingin membeli telefon bimbit berharga RM1 200 dalam masa 6 bulan. Apakah jenis matlamat kewangan ini?',
+    ['Tempoh kurang daripada setahun', 'Amaun tidak besar'],
+    'Matlamat jangka pendek'),
+  L('Kelaskan sebagai perbelanjaan tetap atau tidak tetap: sewa rumah, bil elektrik, ansuran kereta, makan di restoran.',
+    ['Tetap = jumlah sama setiap bulan', 'Tidak tetap = berubah-ubah mengikut penggunaan'],
+    'Tetap: sewa rumah, ansuran kereta. Tidak tetap: bil elektrik, makan di restoran'),
+  L('Encik Lim menerima gaji RM3 500, sewa bilik RM400 dan dividen RM100 sebulan. Cari jumlah pendapatan dan pendapatan pasif.',
+    ['Pendapatan aktif = gaji = RM3 500', 'Pendapatan pasif = sewa + dividen = 400 + 100 = RM500', 'Jumlah = 3 500 + 500'],
+    'Jumlah RM4 000; pasif RM500'),
+  L('Pendapatan RM4 000, perbelanjaan tetap RM1 800, perbelanjaan tidak tetap RM1 500. Cari aliran tunai.',
+    ['Jumlah perbelanjaan = 1 800 + 1 500 = RM3 300', 'Aliran tunai = 4 000 − 3 300'],
+    'RM700 (positif)'),
+  L('Sambungan soalan 4: Encik Lim mahu simpan 10% pendapatan. Cari aliran tunai selepas simpanan.',
+    ['Simpanan = 10% × 4 000 = RM400', 'Aliran tunai = 700 − 400'],
+    'RM300 (masih positif)'),
+  L('Matlamat RM9 000 dalam 3 tahun. Berapakah simpanan bulanan yang diperlukan?',
+    ['3 tahun = 3 × 12 = 36 bulan', `Simpanan bulanan = ${fr('9 000', '36')}`],
+    'RM250 sebulan'),
+  L('Siti menyimpan RM350 sebulan. Berapa bulan untuk mengumpul RM4 200?',
+    [`Bilangan bulan = ${fr('4 200', '350')}`],
+    '12 bulan'),
+  L('Adakah matlamat "Saya mahu jadi kaya" mematuhi konsep SMART? Tulis semula supaya SMART.',
+    ['Tidak khusus (apa?), tidak boleh diukur (berapa RM?), tiada tempoh masa', 'Contoh SMART: "Simpan RM6 000 dalam 2 tahun (RM250 sebulan) untuk membeli motosikal"'],
+    'Tidak SMART — lihat contoh di langkah 2'),
+  L('Pendapatan RM2 800, perbelanjaan RM3 100. Nyatakan aliran tunai dan satu cadangan.',
+    ['Aliran tunai = 2 800 − 3 100 = −RM300', 'Negatif → defisit', 'Cadangan: kurangkan perbelanjaan tidak tetap (kehendak) sebanyak RM300 atau tambah pendapatan'],
+    '−RM300 (negatif)'),
+  L('Gaji Encik Ali RM5 000. Dia mahu kumpul RM15 000 untuk wang pendahuluan kereta dalam 2.5 tahun. Berapakah simpanan bulanan dan adakah ia realistik?',
+    ['2.5 tahun = 30 bulan', `Simpanan = ${fr('15 000', '30')} = RM500`, `Peratus gaji = ${fr('500', '5 000')} × 100% = 10%`, '10% pendapatan → boleh dicapai & realistik'],
+    'RM500 sebulan (10% gaji) — realistik')
+];
+
+/* ================= LATIHAN TINGKATAN 5 ================= */
+
+LAT.t5b1 = [
+  L('y berubah secara langsung dengan x. y = 12 apabila x = 4. Cari y apabila x = 7.',
+    ['y = kx', '12 = k(4) → k = 3', 'y = 3x → y = 3(7)'],
+    'y = 21'),
+  L('y berubah secara langsung dengan kuasa tiga x. y = 16 apabila x = 2. Cari y apabila x = 3.',
+    ['y = kx³', '16 = k(2)³ = 8k → k = 2', 'y = 2(3)³ = 2(27)'],
+    'y = 54'),
+  L('y berubah secara langsung dengan punca kuasa dua x. y = 10 apabila x = 25. Cari x apabila y = 14.',
+    [`y = k${sq('x')}`, `10 = k${sq('25')} = 5k → k = 2`, `14 = 2${sq('x')} → ${sq('x')} = 7`, 'x = 7²'],
+    'x = 49'),
+  L('y berubah secara songsang dengan x. y = 5 apabila x = 4. Cari y apabila x = 10.',
+    [`y = ${fr('k', 'x')}`, `5 = ${fr('k', '4')} → k = 20`, `y = ${fr('20', '10')}`],
+    'y = 2'),
+  L('y berubah secara songsang dengan kuasa dua x. y = 3 apabila x = 2. Cari y apabila x = 4.',
+    [`y = ${fr('k', 'x²')}`, `3 = ${fr('k', '4')} → k = 12`, `y = ${fr('12', '4²')} = ${fr('12', '16')}`],
+    `y = ${fr('3', '4')}`),
+  L('p berubah secara langsung dengan q dan r. p = 24 apabila q = 2, r = 3. Cari p apabila q = 5, r = 2.',
+    ['p = kqr', '24 = k(2)(3) = 6k → k = 4', 'p = 4(5)(2)'],
+    'p = 40'),
+  L('w berubah secara langsung dengan x dan secara songsang dengan y. w = 6 apabila x = 9, y = 3. Cari w apabila x = 12, y = 8.',
+    [`w = ${fr('kx', 'y')}`, `6 = ${fr('9k', '3')} = 3k → k = 2`, `w = ${fr('2(12)', '8')} = ${fr('24', '8')}`],
+    'w = 3'),
+  L('Tulis hubungan: "L berubah secara langsung dengan kuasa dua j dan secara songsang dengan t".',
+    ['Langsung → di atas: j²', 'Songsang → di bawah: t', 'Tambah pemalar k'],
+    `L = ${fr('kj²', 't')}`),
+  L('y ∝ x². Jika x digandakan tiga, apakah yang berlaku kepada y?',
+    ['y = kx²', 'x baharu = 3x → y baharu = k(3x)² = 9kx²', '= 9y'],
+    'y menjadi 9 kali ganda'),
+  L('Masa, T hari, untuk menyiapkan kerja berubah secara songsang dengan bilangan pekerja, n. 6 pekerja siap dalam 10 hari. Berapa hari jika 15 pekerja?',
+    [`T = ${fr('k', 'n')}`, `10 = ${fr('k', '6')} → k = 60`, `T = ${fr('60', '15')}`],
+    '4 hari')
+];
+
+LAT.t5b2 = [
+  L(`Nyatakan peringkat bagi (a) ${mx(3, '1', '2', '3')} &nbsp;(b) ${mx(1, '4', '5')}`,
+    ['Peringkat = baris × lajur', '(a) 1 baris, 3 lajur', '(b) 2 baris, 1 lajur'],
+    '(a) 1 × 3 &nbsp;(b) 2 × 1'),
+  L(`Diberi ${mx(2, 'x', '3', '4', 'y − 1')} = ${mx(2, '5', '3', '4', '7')}. Cari x dan y.`,
+    ['Matriks sama → unsur sepadan sama', 'x = 5', 'y − 1 = 7 → y = 8'],
+    'x = 5, y = 8'),
+  L(`Hitung ${mx(2, '3', '−1', '2', '4')} + ${mx(2, '1', '5', '−2', '0')}.`,
+    ['Tambah unsur sepadan', '3 + 1 = 4; −1 + 5 = 4; 2 + (−2) = 0; 4 + 0 = 4'],
+    mx(2, '4', '4', '0', '4')),
+  L(`Matriks ${mx(2, 'k', '4', '3', '6')} tidak mempunyai matriks songsang. Cari k.`,
+    ['Tiada songsang → penentu = 0', 'ad − bc = 6k − 4(3) = 0', '6k = 12'],
+    'k = 2'),
+  L(`Hitung 2${mx(2, '1', '−3', '0', '2')} − ${mx(2, '4', '1', '2', '3')}.`,
+    [`Darab skalar dahulu: ${mx(2, '2', '−6', '0', '4')}`, 'Tolak unsur sepadan: 2 − 4, −6 − 1, 0 − 2, 4 − 3'],
+    mx(2, '−2', '−7', '−2', '1')),
+  L(`Hitung ${mx(2, '2', '1', '3', '4')}${mx(1, '1', '2')}.`,
+    ['(2 × 2)(2 × 1) → hasil 2 × 1', 'Baris 1: 2(1) + 1(2) = 4', 'Baris 2: 3(1) + 4(2) = 11'],
+    mx(1, '4', '11')),
+  L(`Hitung ${mx(2, '1', '2', '0', '−1')}${mx(2, '3', '1', '2', '4')}.`,
+    ['Baris 1 × lajur 1: 1(3) + 2(2) = 7; × lajur 2: 1(1) + 2(4) = 9', 'Baris 2 × lajur 1: 0(3) + (−1)(2) = −2; × lajur 2: 0(1) + (−1)(4) = −4'],
+    mx(2, '7', '9', '−2', '−4')),
+  L(`Cari matriks songsang bagi ${mx(2, '5', '2', '7', '3')}.`,
+    ['Penentu = 5(3) − 2(7) = 15 − 14 = 1', `A⁻¹ = ${fr('1', '1')}${mx(2, '3', '−2', '−7', '5')}`],
+    mx(2, '3', '−2', '−7', '5')),
+  L(`Cari matriks songsang bagi ${mx(2, '2', '4', '1', '3')}.`,
+    ['Penentu = 2(3) − 4(1) = 2', `A⁻¹ = ${fr('1', '2')}${mx(2, '3', '−4', '−1', '2')}`, 'Bahagi setiap unsur dengan 2'],
+    mx(2, fr('3', '2'), '−2', `−${fr('1', '2')}`, '1')),
+  L('Guna kaedah matriks untuk menyelesaikan: 3x + 2y = 12 dan x + y = 5.',
+    [`${mx(2, '3', '2', '1', '1')}${mx(1, 'x', 'y')} = ${mx(1, '12', '5')}`, 'Penentu = 3(1) − 2(1) = 1', `${mx(1, 'x', 'y')} = ${mx(2, '1', '−2', '−1', '3')}${mx(1, '12', '5')} = ${mx(1, '12 − 10', '−12 + 15')}`, 'Semak: 3(2) + 2(3) = 12 ✔, 2 + 3 = 5 ✔'],
+    'x = 2, y = 3')
+];
+
+LAT.t5b3 = [
+  L('Polisi insurans hayat bernilai muka RM150 000 dengan kadar premium RM3.20 bagi setiap RM1 000. Cari premium tahunan.',
+    [`Premium = ${fr('150 000', '1 000')} × 3.20`, '= 150 × 3.20'],
+    'RM480 setahun'),
+  L('Nilai muka RM200 000, kadar RM1.80 per RM1 000. Ditambah perlindungan penyakit kritikal 25% nilai muka asas pada kadar RM1.50 per RM1 000. Cari jumlah premium tahunan.',
+    ['Premium asas = 200 × 1.80 = RM360', 'Penyakit kritikal = 25% × 200 000 = RM50 000', 'Premium tambahan = 50 × 1.50 = RM75', 'Jumlah = 360 + 75'],
+    'RM435 setahun'),
+  L('Deduktibel RM250. Kerugian RM1 800. Cari bayaran pampasan.',
+    ['Kerugian > deduktibel → boleh tuntut', 'Pampasan = 1 800 − 250'],
+    'RM1 550'),
+  L('Deduktibel RM500. Kerugian RM400. Berapakah pampasan?',
+    ['Kerugian &lt; deduktibel', 'Tidak boleh tuntut — pemegang polisi tanggung sendiri RM400'],
+    'Tiada pampasan'),
+  L('Nilai boleh insurans rumah RM400 000. Ko-insurans 80%. Cari jumlah insurans yang harus dibeli.',
+    ['Harus beli = % ko-insurans × nilai boleh insurans', '= 80% × 400 000'],
+    'RM320 000'),
+  L('Guna soalan 5. Rumah diinsuranskan RM320 000, deduktibel RM1 000. Kerugian RM50 000. Cari pampasan.',
+    ['Diinsuranskan = jumlah yang harus dibeli (cukup)', 'Pampasan = kerugian − deduktibel = 50 000 − 1 000'],
+    'RM49 000'),
+  L('Guna soalan 5. Rumah hanya diinsuranskan RM240 000, deduktibel RM1 000. Kerugian RM50 000. Cari pampasan dan penalti ko-insurans.',
+    ['240 000 &lt; 320 000 → insurans tidak cukup', `${fr('240 000', '320 000')} × 50 000 = 37 500`, 'Pampasan = 37 500 − 1 000 = RM36 500', 'Penalti = 50 000 − 37 500 = RM12 500'],
+    'Pampasan RM36 500; penalti RM12 500'),
+  L('Rumah dalam soalan 7 (diinsuranskan RM240 000, deduktibel RM1 000) mengalami kerugian menyeluruh. Cari pampasan.',
+    ['Kerugian menyeluruh → pampasan = jumlah dibeli − deduktibel', '= 240 000 − 1 000'],
+    'RM239 000'),
+  L('Kos rawatan RM20 000. Deduktibel RM2 000 dan ko-insurans 80/20. Berapakah yang dibayar syarikat dan pemegang polisi?',
+    ['Selepas deduktibel: 20 000 − 2 000 = 18 000', 'Syarikat: 80% × 18 000 = RM14 400', 'Pemegang polisi: 2 000 + 20% × 18 000 = 2 000 + 3 600 = RM5 600', 'Semak: 14 400 + 5 600 = 20 000 ✔'],
+    'Syarikat RM14 400; pemegang polisi RM5 600'),
+  L('Polisi komprehensif (Semenanjung), kereta 1 400 cc bernilai RM40 000, NCD 30%. Kadar RM1 000 pertama = RM273.80, RM26 bagi setiap RM1 000 berikutnya. Cari premium kasar.',
+    [`Baki = ${fr('40 000 − 1 000', '1 000')} = 39`, 'Premium asas = 273.80 + 26 × 39 = 273.80 + 1 014 = RM1 287.80', 'NCD = 30% × 1 287.80 = RM386.34', 'Premium kasar = 1 287.80 − 386.34'],
+    'RM901.46')
+];
+
+LAT.t5b4 = [
+  L('Pendapatan tahunan RM60 000, derma diluluskan RM500, jumlah pelepasan RM18 000. Cari pendapatan bercukai.',
+    ['Pendapatan bercukai = pendapatan − pengecualian − pelepasan', '= 60 000 − 500 − 18 000'],
+    'RM41 500'),
+  L('Pendapatan bercukai RM41 500. Banjaran 35 001–50 000: cukai RM35 000 pertama RM600, kadar baki 8%. Cari cukai pendapatan.',
+    ['Baki = 41 500 − 35 000 = 6 500', 'Cukai baki = 6 500 × 8% = 520', 'Cukai = 600 + 520', 'Lebih RM35 000 → tiada rebat RM400'],
+    'RM1 120'),
+  L('Pendapatan bercukai RM28 000. Banjaran 20 001–35 000: RM150 + 3% baki. Cari cukai yang perlu dibayar.',
+    ['Cukai baki = (28 000 − 20 000) × 3% = 240', 'Cukai = 150 + 240 = 390', 'Layak rebat RM400 (≤ RM35 000)', '390 − 400 &lt; 0 → tiada cukai perlu dibayar'],
+    'RM0'),
+  L('Pendapatan bercukai RM33 000 (banjaran 20 001–35 000: RM150 + 3%). Cari cukai selepas rebat.',
+    ['Cukai baki = (33 000 − 20 000) × 3% = 390', 'Cukai = 150 + 390 = 540', 'Tolak rebat RM400'],
+    'RM140'),
+  L('Pendapatan bercukai RM60 000 (banjaran 50 001–70 000: RM1 800 + 14% baki). Bayar zakat RM500. Cari cukai pendapatan.',
+    ['Cukai baki = (60 000 − 50 000) × 14% = 1 400', 'Cukai = 1 800 + 1 400 = 3 200', 'Zakat → rebat: 3 200 − 500'],
+    'RM2 700'),
+  L('Cukai sebenar RM2 700 tetapi PCB yang dipotong sepanjang tahun hanya RM2 400. Apakah tindakan?',
+    ['Cukai > PCB → bayaran tidak mencukupi', 'Baki = 2 700 − 2 400', 'Baki perlu dibayar kepada LHDN'],
+    'Bayar baki RM300 kepada LHDN'),
+  L('Anggaran sewa bulanan rumah RM900. Kadar cukai pintu 6%. Cari cukai pintu setahun dan setiap setengah tahun.',
+    ['Nilai tahunan = 900 × 12 = RM10 800', 'Cukai pintu = 6% × 10 800 = RM648', 'Setengah tahun = 648 ÷ 2'],
+    'RM648 setahun; RM324 setiap setengah tahun'),
+  L('Tanah seluas 250 m², kadar cukai tanah RM0.35 setiap m². Cari cukai tanah setahun.',
+    ['Cukai tanah = kadar × keluasan', '= 0.35 × 250'],
+    'RM87.50'),
+  L('Bil restoran RM85 sebelum cukai. Cukai perkhidmatan 6%. Cari jumlah bil.',
+    ['Cukai = 6% × 85 = RM5.10', 'Jumlah = 85 + 5.10'],
+    'RM90.10'),
+  L('Harga sebuah peti sejuk RM1 200 dan dikenakan cukai jualan 10%. Cari harga yang dibayar.',
+    ['Cukai jualan = 10% × 1 200 = RM120', 'Harga = 1 200 + 120'],
+    'RM1 320')
+];
+
+LAT.t5b5 = [
+  L('Dalam ΔPQR dan ΔXYZ, PQ = XY, QR = YZ dan ∠PQR = ∠XYZ. Adakah kedua-dua segi tiga kongruen? Nyatakan syaratnya.',
+    ['Dua sisi sepadan sama', 'Sudut yang sama terletak DI ANTARA dua sisi itu', 'Sisi-Sudut-Sisi'],
+    'Kongruen (SAS)'),
+  L('Dua segi tiga mempunyai ketiga-tiga sudut sepadan yang sama. Adakah kedua-duanya semestinya kongruen?',
+    ['Syarat AAA hanya menentukan bentuk', 'Saiz mungkin berbeza'],
+    'Tidak semestinya (hanya serupa)'),
+  L("P ialah pusat pembesaran. PA = 4 cm dan PA' = 10 cm. Cari faktor skala.",
+    [`k = ${fr("PA'", 'PA')} = ${fr('10', '4')}`],
+    'k = 2.5'),
+  L(`Sisi objek 6 cm, faktor skala ${fr('1', '3')}. Cari panjang sisi imej.`,
+    [`Sisi imej = k × sisi objek = ${fr('1', '3')} × 6`],
+    '2 cm'),
+  L('Luas objek 20 cm², faktor skala 3. Cari luas imej.',
+    ['Luas imej = k² × luas objek', '= 3² × 20 = 9 × 20'],
+    '180 cm²'),
+  L('Luas objek 8 cm² dan luas imej 72 cm². Cari faktor skala.',
+    [`k² = ${fr('72', '8')} = 9`, 'k = √9 = 3 (atau −3 jika imej songsang di sebelah bertentangan)'],
+    'k = 3 atau k = −3'),
+  L('Luas objek 50 cm², faktor skala −2. Cari luas imej.',
+    ['Luas imej = k² × luas objek', '(−2)² = 4 (sentiasa positif)', '4 × 50'],
+    '200 cm²'),
+  L(`T ialah translasi ${mx(1, '3', '−2')} dan P ialah pantulan pada paksi-y. Cari imej titik (1, 4) di bawah gabungan TP.`,
+    ['TP → lakukan P dahulu', 'P: (1, 4) → (−1, 4)', 'T: (−1 + 3, 4 − 2)'],
+    '(2, 2)'),
+  L('Cari imej titik (3, 1) di bawah putaran 90° ikut arah jam pada asalan.',
+    ['Putaran 90° ikut arah jam: (x, y) → (y, −x)', '(3, 1) → (1, −3)'],
+    '(1, −3)'),
+  L('Bolehkah pentagon sekata membentuk teselasi dengan sendirinya?',
+    ['Sudut pedalaman pentagon sekata = 108°', `${fr('360°', '108°')} = 3.33… (bukan nombor bulat)`, 'Sudut tidak dapat bertemu tepat 360° di bucu'],
+    'Tidak boleh')
+];
+
+LAT.t5b6 = [
+  L('Dalam sukuan manakah sudut 215° terletak?',
+    ['180° &lt; 215° &lt; 270°'],
+    'Sukuan III'),
+  L('Cari sudut rujukan bagi 300°.',
+    ['300° dalam sukuan IV', 'Sudut rujukan = 360° − 300°'],
+    '60°'),
+  L('Cari nilai sin 135°.',
+    ['Sukuan II → sin positif', 'Sudut rujukan = 180° − 135° = 45°', 'sin 135° = sin 45°'],
+    '0.7071'),
+  L('Cari nilai kos 210°.',
+    ['Sukuan III → kos negatif', 'Sudut rujukan = 210° − 180° = 30°', 'kos 210° = −kos 30°'],
+    '−0.8660'),
+  L('Cari nilai tan 120°.',
+    ['Sukuan II → tan negatif', 'Sudut rujukan = 180° − 120° = 60°', 'tan 120° = −tan 60°'],
+    '−1.7321'),
+  L('Cari nilai sin 330°.',
+    ['Sukuan IV → sin negatif', 'Sudut rujukan = 360° − 330° = 30°', 'sin 330° = −sin 30°'],
+    '−0.5'),
+  L('Cari θ jika kos θ = 0.5 untuk 0° ≤ θ ≤ 360°.',
+    ['Sudut rujukan: kos⁻¹(0.5) = 60°', 'kos positif → sukuan I dan IV', 'I: 60°; IV: 360° − 60° = 300°'],
+    'θ = 60°, 300°'),
+  L('Cari θ jika tan θ = −1 untuk 0° ≤ θ ≤ 360°.',
+    ['Sudut rujukan: tan⁻¹(1) = 45°', 'tan negatif → sukuan II dan IV', 'II: 180° − 45° = 135°; IV: 360° − 45° = 315°'],
+    'θ = 135°, 315°'),
+  L('Cari θ jika sin θ = 0.6428 untuk 0° ≤ θ ≤ 360°.',
+    ['Sudut rujukan: sin⁻¹(0.6428) = 40°', 'sin positif → sukuan I dan II', 'I: 40°; II: 180° − 40° = 140°'],
+    'θ = 40°, 140°'),
+  L('Bagi y = 3 sin 2x + 1, 0° ≤ x ≤ 360°, nyatakan amplitud, bilangan kitaran, nilai maksimum dan minimum.',
+    ['Amplitud = |a| = 3', 'b = 2 → 2 kitaran dalam 0°–360°', 'Maksimum = 3 + 1 = 4', 'Minimum = −3 + 1 = −2'],
+    'Amplitud 3, 2 kitaran, maks 4, min −2')
+];
+
+const DT = tbl(['Kelas', '10–14', '15–19', '20–24', '25–29'], [['Kekerapan', '3', '5', '8', '4']], 'ctr sm');
+
+LAT.t5b7 = [
+  L('Bagi kelas 35 – 39, cari titik tengah, sempadan bawah, sempadan atas dan saiz kelas.',
+    [`Titik tengah = ${fr('35 + 39', '2')} = 37`, 'Sempadan bawah = 35 − 0.5 = 34.5', 'Sempadan atas = 39 + 0.5 = 39.5', 'Saiz kelas = 39.5 − 34.5 = 5'],
+    '37; 34.5; 39.5; 5'),
+  L('Kekerapan lima kelas ialah 3, 7, 12, 6, 2. Tulis kekerapan longgokan.',
+    ['3', '3 + 7 = 10', '10 + 12 = 22', '22 + 6 = 28', '28 + 2 = 30'],
+    '3, 10, 22, 28, 30'),
+  L(`Jadual kekerapan:${DT}Cari min.`,
+    ['Titik tengah (x): 12, 17, 22, 27', 'Σf = 3 + 5 + 8 + 4 = 20', 'Σfx = 36 + 85 + 176 + 108 = 405', `${ov('x')} = ${fr('405', '20')}`],
+    '20.25'),
+  L(`Guna jadual soalan 3:${DT}Cari varians.`,
+    ['Σfx² = 3(144) + 5(289) + 8(484) + 4(729)', '= 432 + 1 445 + 3 872 + 2 916 = 8 665', `σ² = ${fr('8 665', '20')} − 20.25²`, '= 433.25 − 410.0625'],
+    '23.19'),
+  L('Guna jawapan soalan 4. Cari sisihan piawai.',
+    ['σ = √23.1875'],
+    '4.815'),
+  L(`Guna jadual soalan 3:${DT}Nyatakan kelas mod.`,
+    ['Kelas mod = kelas dengan kekerapan tertinggi', 'Kekerapan tertinggi = 8'],
+    '20 – 24'),
+  L('Sebuah ogif mewakili markah 60 murid. Nyatakan kedudukan Q₁, median dan Q₃.',
+    [`Q₁: ${fr('1', '4')} × 60 = 15`, `Median: ${fr('1', '2')} × 60 = 30`, `Q₃: ${fr('3', '4')} × 60 = 45`],
+    'Ke-15, ke-30, ke-45'),
+  L('Daripada ogif, Q₁ = 42 markah dan Q₃ = 58 markah. Cari julat antara kuartil.',
+    ['JAK = Q₃ − Q₁ = 58 − 42'],
+    '16 markah'),
+  L('Daripada ogif 60 murid, kekerapan longgokan pada 50 markah ialah 34. Berapa murid mendapat lebih daripada 50 markah?',
+    ['34 murid mendapat 50 markah dan ke bawah', 'Lebih daripada 50 = 60 − 34'],
+    '26 murid'),
+  L(`Senaraikan titik yang perlu diplot untuk poligon kekerapan jadual soalan 3.${DT}`,
+    ['Plot (titik tengah, kekerapan): (12, 3), (17, 5), (22, 8), (27, 4)', 'Tambah kelas kosong sebelum: 5–9 → titik tengah 7, kekerapan 0', 'Tambah kelas kosong selepas: 30–34 → titik tengah 32, kekerapan 0'],
+    '(7, 0), (12, 3), (17, 5), (22, 8), (27, 4), (32, 0)')
+];
+
+LAT.t5b8 = [
+  L('Susun komponen pemodelan matematik mengikut urutan.',
+    ['1. Mengenal pasti dan mendefinisikan masalah', '2. Membuat andaian dan mengenal pasti pemboleh ubah', '3. Mengaplikasi matematik', '4. Menentusahkan dan mentafsir penyelesaian', '5. Memurnikan model', '6. Melaporkan dapatan'],
+    'Lihat langkah kerja'),
+  L('Kos majlis RM500 (dewan) ditambah RM25 bagi setiap tetamu. Kenal pasti pemboleh ubah dan satu andaian.',
+    ['Pemboleh ubah tak bersandar: bilangan tetamu, n', 'Pemboleh ubah bersandar: jumlah kos, C', 'Andaian: harga makanan per tetamu tetap; tiada caj tersembunyi'],
+    'n dan C; andaian harga tetap'),
+  L('Guna soalan 2. Bina model dan cari kos untuk 80 tetamu.',
+    ['C = 25n + 500 (model linear)', 'C = 25(80) + 500 = 2 000 + 500'],
+    'RM2 500'),
+  L('Guna model C = 25n + 500. Belanjawan RM3 000. Berapa tetamu maksimum?',
+    ['25n + 500 ≤ 3 000', '25n ≤ 2 500', 'n ≤ 100'],
+    '100 tetamu'),
+  L('Populasi: tahun 0 = 1 000, tahun 1 = 1 100, tahun 2 = 1 210. Apakah jenis model dan tulis modelnya.',
+    [`Nisbah: ${fr('1 100', '1 000')} = 1.1; ${fr('1 210', '1 100')} = 1.1 (tetap)`, 'Bertambah 10% setiap tahun → eksponen', 'P = 1 000(1.1)ᵗ'],
+    'Eksponen: P = 1 000(1.1)ᵗ'),
+  L('Guna model soalan 5. Ramalkan populasi pada tahun 3.',
+    ['P = 1 000(1.1)³', '= 1 000 × 1.331'],
+    '1 331'),
+  L('Jualan minggu ke-0, 1, 2, 3 ialah 2, 5, 8, 11 unit. Bina model dan ramalkan jualan minggu ke-10.',
+    ['Bertambah 3 setiap minggu (kadar tetap) → linear', 'y = 3x + 2', 'y = 3(10) + 2'],
+    '32 unit'),
+  L('Tinggi bola, h = −5t² + 20t (meter, t dalam saat). Bilakah bola kembali ke tanah dan berapakah tinggi maksimum?',
+    ['Ke tanah: h = 0 → −5t(t − 4) = 0 → t = 0 atau t = 4', `Maksimum pada paksi simetri: t = −${fr('20', '2(−5)')} = 2`, 'h = −5(2)² + 20(2) = −20 + 40 = 20'],
+    't = 4 s; tinggi maksimum 20 m'),
+  L('Nilai kereta RM80 000 susut 15% setahun. Bina model dan cari nilai selepas 2 tahun.',
+    ['Kekal 85% setiap tahun → V = 80 000(0.85)ᵗ', 'V = 80 000(0.85)² = 80 000 × 0.7225'],
+    'RM57 800'),
+  L('Ramalan model jauh berbeza daripada data sebenar. Apakah komponen pemodelan yang perlu dilakukan dan bagaimana?',
+    ['Komponen: memurnikan model matematik', 'Semak semula andaian & pemboleh ubah', 'Cuba jenis fungsi lain (linear/kuadratik/eksponen)', 'Ulang langkah aplikasi & pengesahan'],
+    'Memurnikan model, kemudian ulang langkah 3–4')
+];
+
 /* ===================== APLIKASI ===================== */
 (function () {
   const $ = (s, r = document) => r.querySelector(s);
@@ -1482,7 +2121,9 @@ CHAPTERS.push({
   const view = $('#view');
   const icon = (id, cls = 'i') => `<svg class="${cls}"><use href="#${id}"/></svg>`;
   const byId = {};
-  CHAPTERS.forEach(c => { byId[c.id] = c; c.total = c.cards.length + 1; });
+  CHAPTERS.forEach(c => { byId[c.id] = c; c.lat = LAT[c.id] || []; c.LI = c.cards.length; c.QI = c.cards.length + 1; c.total = c.cards.length + 2; });
+  const latQ = {};
+  let pendingLatQ = null;
 
   /* ---------- storan selamat ---------- */
   const store = {
@@ -1491,6 +2132,8 @@ CHAPTERS.push({
   };
   let seen = store.get('seen', {});      // {chapId: [idx,...]}
   let best = store.get('best', {});      // {chapId: score}
+  let latDone = store.get('latDone', {}); // {chapId: [q,...]}
+  const latCount = () => Object.values(latDone).reduce((s, a) => s + a.length, 0);
   const markSeen = (cid, i) => {
     const a = seen[cid] || (seen[cid] = []);
     if (!a.includes(i)) { a.push(i); store.set('seen', seen); }
@@ -1596,7 +2239,7 @@ CHAPTERS.push({
         <div class="credit">${icon('i-pencil')}<div>Disediakan oleh<b>Cikgu Rabbani</b>SMK Dato' Undang Musa Al-Haj, Jelebu</div></div>
         <div class="hstats">
           <div><b>${allPct()}%</b><span>Kemajuan anda</span></div>
-          <div><b>18</b><span>Bab lengkap</span></div>
+                    <div><b>${latCount()}/180</b><span>Latihan selesai</span></div>
           <div><b>${quizDone}/18</b><span>Kuiz dicuba</span></div>
         </div>
       </section>
@@ -1643,10 +2286,12 @@ CHAPTERS.push({
     document.body.style.setProperty('--cc', c.color);
     store.set('last', { c: cid, i: idx });
     markSeen(cid, idx);
-    const isQuiz = idx === c.cards.length;
-    const card = isQuiz ? null : c.cards[idx];
+    const isQuiz = idx === c.QI, isLat = idx === c.LI;
+    const card = (isQuiz || isLat) ? null : c.cards[idx];
+    const sm = id => icon(id).replace('class="i"', 'class="i" style="width:13px;height:13px"');
     const tabs = c.cards.map((k, i) => `<button class="tab ${i === idx ? 'on' : ''} ${(seen[cid] || []).includes(i) ? 'seen' : ''}" data-i="${i}"><span class="n">${i + 1}</span>${k.t}</button>`).join('') +
-      `<button class="tab ${isQuiz ? 'on' : ''} ${(seen[cid] || []).includes(c.cards.length) ? 'seen' : ''}" data-i="${c.cards.length}"><span class="n">${icon('i-trophy').replace('class="i"', 'class="i" style="width:13px;height:13px"')}</span>Kuiz Pantas</button>`;
+      `<button class="tab tlat ${isLat ? 'on' : ''} ${(seen[cid] || []).includes(c.LI) ? 'seen' : ''}" data-i="${c.LI}"><span class="n">${sm('i-pencil')}</span>Latihan (${(latDone[cid] || []).length}/${c.lat.length})</button>` +
+      `<button class="tab ${isQuiz ? 'on' : ''} ${(seen[cid] || []).includes(c.QI) ? 'seen' : ''}" data-i="${c.QI}"><span class="n">${sm('i-trophy')}</span>Kuiz Pantas</button>`;
     const nextC = CHAPTERS[CHAPTERS.indexOf(c) + 1];
     const last = idx === c.total - 1;
     view.innerHTML = `
@@ -1655,8 +2300,8 @@ CHAPTERS.push({
         <div class="why">${icon('i-bolt')}<span>${c.why}</span></div></section>
       <nav class="tabs" id="tabs">${tabs}</nav>
       <article class="panel" id="panel">
-        <h2><span class="pi">${icon('i-' + (isQuiz ? 'trophy' : card.ic))}</span><span><small>KAD ${idx + 1} DARIPADA ${c.total}</small>${isQuiz ? 'Kuiz Pantas: Uji Diri!' : card.t}</span></h2>
-        <div id="cbody">${isQuiz ? quizHTML(c) : card.h}</div>
+        <h2><span class="pi">${icon('i-' + (isQuiz ? 'trophy' : isLat ? 'pencil' : card.ic))}</span><span><small>KAD ${idx + 1} DARIPADA ${c.total}</small>${isQuiz ? 'Kuiz Pantas: Uji Diri!' : isLat ? '10 Latihan + Langkah Kerja' : card.t}</span></h2>
+        <div id="cbody">${isQuiz ? quizHTML(c) : isLat ? '<div id="latBox"></div>' : card.h}</div>
       </article>
       <div class="pager">
         <button class="prev" id="pgPrev" ${idx === 0 ? 'disabled' : ''}>${icon('i-left')}<span>Sebelum</span></button>
@@ -1668,9 +2313,11 @@ CHAPTERS.push({
     $('#pgPrev').onclick = () => go(cid, idx - 1);
     $('#pgNext').onclick = () => last ? (location.hash = nextC ? `#/b/${nextC.id}/0` : '#/') : go(cid, idx + 1);
     if (isQuiz) bindQuiz(c);
+    if (isLat) { if (pendingLatQ != null) { latQ[cid] = pendingLatQ; pendingLatQ = null; } drawLat(c); }
     if (hl) highlight($('#cbody'), hl);
     $('#topSub').textContent = `T${c.f} Bab ${c.n} • ${c.title}`;
     $('#pChapName').textContent = `T${c.f} Bab ${c.n}: ${c.title}`;
+    $('#pLatName').textContent = `10 soalan + ruang jawapan + skema (T${c.f} Bab ${c.n})`;
     buildSide();
   }
   function go(cid, i) { location.hash = `#/b/${cid}/${i}`; }
@@ -1682,10 +2329,56 @@ CHAPTERS.push({
     if (sx == null || !location.hash.startsWith('#/b/')) return;
     const dx = e.changedTouches[0].clientX - sx, dy = e.changedTouches[0].clientY - sy;
     if (Math.abs(dx) > 70 && Math.abs(dx) > Math.abs(dy) * 1.8) {
-      if (dx < 0) $('#pgNext').click(); else if (!$('#pgPrev').disabled) $('#pgPrev').click();
+      if (cur && cur.idx === cur.c.LI && $('#latBox')) { latGo(cur.c, (latQ[cur.c.id] || 0) + (dx < 0 ? 1 : -1)); }
+      else if (dx < 0) $('#pgNext').click(); else if (!$('#pgPrev').disabled) $('#pgPrev').click();
     }
     sx = null;
   }, { passive: true });
+
+  /* ---------- latihan ---------- */
+  function latGo(c, q) {
+    const n = c.lat.length; if (q < 0 || q >= n) return;
+    latQ[c.id] = q; drawLat(c);
+    const b = $('#latBox'); if (b) scrollTo(0, Math.max(0, b.getBoundingClientRect().top + scrollY - 80));
+  }
+  function drawLat(c) {
+    const box = $('#latBox'); if (!box) return;
+    const q = latQ[c.id] || 0, L = c.lat[q], done = latDone[c.id] || [];
+    let shown = 0;
+    box.innerHTML = `
+      <p class="lead" style="margin-bottom:8px">✍️ Cuba jawab dalam buku dahulu. Kemudian buka langkah kerja <b>satu demi satu</b> untuk semak.</p>
+      <div class="lnums">${c.lat.map((_, i) => `<button class="${i === q ? 'on' : ''} ${done.includes(i) ? 'done' : ''}" data-q="${i}">${i + 1}</button>`).join('')}</div>
+      <div class="lq"><div class="lqh"><span>SOALAN ${q + 1} / ${c.lat.length}</span>${done.includes(q) ? `<span class="ldone">${icon('i-check')} Selesai</span>` : ''}</div><div class="lqt">${L.q}</div></div>
+      <ol class="lsteps" id="lSteps"></ol>
+      <div class="lans" id="lAns" hidden><span>JAWAPAN</span><div>${L.a}</div></div>
+      <div class="lbtns"><button class="lstep" id="lStep"></button><button class="lall" id="lAll">Tunjuk semua</button></div>
+      <div class="lnav"><button id="lPrev" ${q === 0 ? 'disabled style="visibility:hidden"' : ''}>${icon('i-left')} Soalan ${q}</button><button id="lNext" ${q === c.lat.length - 1 ? 'disabled style="visibility:hidden"' : ''}>Soalan ${q + 2} ${icon('i-right')}</button></div>`;
+    const stepsEl = $('#lSteps'), btn = $('#lStep');
+    const label = () => {
+      if (shown < L.s.length) btn.innerHTML = `${icon('i-bulb')} Langkah ${shown + 1} / ${L.s.length}`;
+      else if ($('#lAns').hidden) btn.innerHTML = `${icon('i-target')} Lihat jawapan`;
+      else { btn.innerHTML = q < c.lat.length - 1 ? `Soalan seterusnya ${icon('i-right')}` : `Ke Kuiz Pantas ${icon('i-trophy')}`; $('#lAll').style.display = 'none'; }
+    };
+    const finish = () => {
+      $('#lAns').hidden = false;
+      const d = latDone[c.id] || (latDone[c.id] = []);
+      if (!d.includes(q)) { d.push(q); store.set('latDone', latDone); }
+      const nb = $(`.lnums [data-q="${q}"]`, box); if (nb) nb.classList.add('done');
+      const tl = $('.tab.tlat', view); if (tl) tl.lastChild.textContent = `Latihan (${d.length}/${c.lat.length})`;
+    };
+    const reveal = () => {
+      if (shown < L.s.length) { stepsEl.insertAdjacentHTML('beforeend', `<li style="animation-delay:0s">${L.s[shown]}</li>`); shown++; }
+      else if ($('#lAns').hidden) finish();
+      else { if (q < c.lat.length - 1) latGo(c, q + 1); else go(c.id, c.QI); return; }
+      label();
+    };
+    btn.onclick = reveal;
+    $('#lAll').onclick = () => { while (shown < L.s.length) reveal(); if ($('#lAns').hidden) reveal(); };
+    $$('.lnums button', box).forEach(b => b.onclick = () => latGo(c, +b.dataset.q));
+    $('#lPrev').onclick = () => latGo(c, q - 1);
+    $('#lNext').onclick = () => latGo(c, q + 1);
+    label();
+  }
 
   /* ---------- kuiz ---------- */
   function quizHTML(c) {
@@ -1708,7 +2401,7 @@ CHAPTERS.push({
           if (best[c.id] == null || right > best[c.id]) { best[c.id] = right; store.set('best', best); }
           const msg = right === 3 ? 'Hebat! Anda kuasai bab ini 🏆' : right === 2 ? 'Bagus! Sikit lagi 💪' : 'Tak apa — ulang kad nota & cuba lagi 🌱';
           $('#qscore').innerHTML = `<div class="score">${icon('i-trophy')}<div><b>${right}/3</b><br>${msg}</div><button id="qAgain">Cuba lagi</button></div>`;
-          $('#qAgain').onclick = () => chapter(c.id, c.cards.length);
+          $('#qAgain').onclick = () => chapter(c.id, c.QI);
         }
       });
     });
@@ -1737,7 +2430,8 @@ CHAPTERS.push({
   const INDEX = [];
   CHAPTERS.forEach(c => {
     c.cards.forEach((k, i) => { tmp.innerHTML = k.h; INDEX.push({ c, i, t: k.t, text: (tmp.textContent || '').replace(/\s+/g, ' ').trim() }); });
-    INDEX.push({ c, i: c.cards.length, t: 'Kuiz Pantas', text: c.quiz.map(q => q.q + ' ' + q.o.join(' ') + ' ' + q.e).join(' ') });
+    c.lat.forEach((L, n) => { tmp.innerHTML = L.q + ' ' + L.s.join(' ') + ' ' + L.a; INDEX.push({ c, i: c.LI, lq: n, t: `Latihan ${n + 1}`, text: (tmp.textContent || '').replace(/\s+/g, ' ').trim() }); });
+    INDEX.push({ c, i: c.QI, t: 'Kuiz Pantas', text: c.quiz.map(q => q.q + ' ' + q.o.join(' ') + ' ' + q.e).join(' ') });
   });
   const esc = s => s.replace(/[&<>]/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[m]));
   function doSearch(q) {
@@ -1764,7 +2458,7 @@ CHAPTERS.push({
       : `<p class="hint">Tiada hasil untuk "<b>${esc(q)}</b>". Cuba perkataan lain (cth. "min", "graf", "set").</p>`;
     $$('button[data-n]', box).forEach(b => b.onclick = () => {
       const r = res[+b.dataset.n]; closeAll();
-      const target = `#/b/${r.e.c.id}/${r.e.i}`; pendingHL = words;
+      const target = `#/b/${r.e.c.id}/${r.e.i}`; pendingHL = words; if (r.e.lq != null) pendingLatQ = r.e.lq;
       if (location.hash === target) route(); else location.hash = target;
     });
   }
@@ -1788,21 +2482,31 @@ CHAPTERS.push({
   /* ---------- cetak ---------- */
   function openPrint() {
     closeAll();
-    $('#pChap').style.display = location.hash.startsWith('#/b/') ? '' : 'none';
+    $('#pChap').style.display = $('#pLat').style.display = location.hash.startsWith('#/b/') ? '' : 'none';
     $('#printSheet').classList.add('on'); scrim.classList.add('on');
   }
   $('#dPrint').onclick = openPrint; $('#nCetak').onclick = openPrint;
   function printChapter(c) {
     return `<section class="pch" style="--cc:${c.color}"><div class="pchh"><small>TINGKATAN ${c.f} • BAB ${c.n}</small><h2>${c.title}</h2></div>
       ${c.cards.map((k, i) => `<div class="pcard"><h3>${i + 1}. ${k.t}</h3>${k.h}</div>`).join('')}
+      <div class="pcard"><h3>Latihan &amp; Langkah Kerja</h3>${c.lat.map((L, n) => `<div class="plat"><p><b>${n + 1}.</b> ${L.q}</p><ol>${L.s.map(x => `<li>${x}</li>`).join('')}</ol><p class="pans"><b>Jawapan:</b> ${L.a}</p></div>`).join('')}</div>
       <div class="pcard"><h3>Kuiz Pantas</h3>${c.quiz.map((q, i) => `<p class="pq"><b>${i + 1}. ${q.q}</b><br>${q.o.map((o, j) => `${'ABCD'[j]}. ${o}`).join(' &nbsp;&nbsp; ')}</p>`).join('')}
       <p class="pq" style="margin-top:8px"><i>Jawapan: ${c.quiz.map((q, i) => `${i + 1}${'ABCD'[q.a]}`).join(', ')}</i></p></div>
       <p class="pfoot">Nota Kilat Matematik SPM • Disediakan oleh Cikgu Rabbani, SMK Dato' Undang Musa Al-Haj, Jelebu</p></section>`;
+  }
+  function printWorksheet(c) {
+    return `<section class="pch" style="--cc:${c.color}"><div class="pchh"><small>LEMBARAN LATIHAN • TINGKATAN ${c.f} • BAB ${c.n}</small><h2>${c.title}</h2></div>
+      <p class="pq">Nama: ______________________ &nbsp; Kelas: __________ &nbsp; Tarikh: __________</p>
+      ${c.lat.map((L, n) => `<div class="pws"><p><b>${n + 1}.</b> ${L.q}</p><div class="pspace"></div></div>`).join('')}
+      <p class="pfoot">Nota Kilat Matematik SPM • Disediakan oleh Cikgu Rabbani, SMK Dato' Undang Musa Al-Haj, Jelebu</p></section>
+      <section class="pch" style="--cc:${c.color}"><div class="pchh"><small>SKEMA JAWAPAN • T${c.f} BAB ${c.n}</small><h2>${c.title}</h2></div>
+      ${c.lat.map((L, n) => `<div class="plat"><p><b>${n + 1}.</b> ${L.q}</p><ol>${L.s.map(x => `<li>${x}</li>`).join('')}</ol><p class="pans"><b>Jawapan:</b> ${L.a}</p></div>`).join('')}</section>`;
   }
   function doPrint(mode) {
     const cover = (t) => `<div class="pcover"><img src="${document.querySelector('.logo').src}" style="width:70px;height:70px;border-radius:16px" alt=""><h1>${t}</h1><p><b>Nota Kilat Matematik SPM</b> — Tingkatan 4 &amp; 5</p><p>Disediakan oleh Cikgu Rabbani, SMK Dato' Undang Musa Al-Haj, Jelebu</p></div>`;
     let h = '';
     if (mode === 'chap' && cur) h = printChapter(cur.c);
+    if (mode === 'latws' && cur) h = printWorksheet(cur.c);
     if (mode === 't4' || mode === 't5') { const f = +mode[1]; h = cover(`Matematik Tingkatan ${f}`) + CHAPTERS.filter(c => c.f === f).map(printChapter).join(''); }
     if (mode === 'all') h = cover('Matematik Tingkatan 4 & 5') + CHAPTERS.map(printChapter).join('');
     if (mode === 'rumus') h = cover('Rumus Kilat Matematik') + CHAPTERS.map(c => { const r = rumusOf(c); return r ? `<div class="pcard" style="--cc:${c.color}"><h3>T${c.f} Bab ${c.n}: ${c.title}</h3>${r}</div>` : ''; }).join('');
